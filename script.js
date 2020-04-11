@@ -36,6 +36,8 @@ function calculate() {
             // console.log(rate);
             rateEl.innerText = `1 ${currency_one} = ${rate} ${currency_two}`;
 
+            amountEl_two.value = (amountEl_one.value * rate).toFixed(2); //.toFixed(2) gives you two decimal places
+
         });
 }
 
@@ -44,5 +46,14 @@ currencyEl_one.addEventListener('change', calculate)
 amountEl_one.addEventListener('input', calculate)
 currencyEl_two.addEventListener('change', calculate)
 amountEl_two.addEventListener('input', calculate)
+
+//add event listener for swap functionality
+swap.addEventListener('click', () => {
+    //temp variable to store value of currency one
+    const temp = currencyEl_one.value;
+    currencyEl_one.value = currencyEl_two.value;
+    currencyEl_two.value = temp;
+    calculate();
+});
 
 calculate();
