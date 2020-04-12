@@ -1,3 +1,17 @@
+//make sure service workers are supported
+if (navigator.serviceWorker) {
+    // console.log('Service Worker Supported')
+    //then register serviceWorker
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+            .register('sw_cached.js')
+            //this returns a promise
+            .then(reg => console.log('Service Worker Registered'))
+            //be sure to catch any errors
+            .catch(err => console.log(`Service Worker Error: ${err}`))
+    });
+}
+
 // Fetch API practice
 // function calculate() {
 //     fetch('items.json') //returns a promise
@@ -57,3 +71,6 @@ swap.addEventListener('click', () => {
 });
 
 calculate();
+
+//TODO
+//make project progressive web app
